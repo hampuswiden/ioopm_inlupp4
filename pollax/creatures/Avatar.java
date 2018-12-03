@@ -1,5 +1,10 @@
 package pollax.creatures;
 
+import java.util.List;
+import java.util.ArrayList;
+import pollax.items.Item;
+import pollax.world.Room;
+
 /**
  * @author      Jonathan Franzén, Hampus Widén
  * @version     1.0
@@ -7,6 +12,11 @@ package pollax.creatures;
  */
 public class Avatar extends Creature {
 	private String name;
+	private Room room;
+	private List<Item> items;
+	private int hp = 60;
+	private List<String> unfinishedCourses;
+	private List<String> finishedCourses;
 
 	public Avatar(String name) {
 		this.name = name;
