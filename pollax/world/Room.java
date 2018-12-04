@@ -7,6 +7,9 @@ import pollax.interactive.InteractiveObject;
 import pollax.interactive.Door;
 import pollax.items.Item;
 
+import java.io.IOException;
+import pollax.utils.InvalidInputException;
+
 /**
  * @author      Jonathan Franzén, Hampus Widén
  * @version     1.0
@@ -47,7 +50,7 @@ public class Room {
 		doors.add(sDoor);
 		doors.add(wDoor);
 		this.doors = doors;
-		
+
 	}
 
 	public String toString() {
@@ -58,7 +61,7 @@ public class Room {
 		" W: " + this.rooms.get(3);
 	}
 
-	public int getDirection(String direction) {
+	public int getDirection(String direction) throws InvalidInputException {
 		int door = -1;
 		if (direction.equals("north")) {
 			door = 0;
@@ -69,7 +72,7 @@ public class Room {
 		} else if (direction.equals("west")) {
 			door = 3;
 		} else {
-			// Error handling
+			throw new InvalidInputException(direction + " is not a valid direction");
 		}
 		return door;
 	}

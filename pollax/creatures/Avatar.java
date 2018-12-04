@@ -1,10 +1,11 @@
 package pollax.creatures;
 
+import pollax.world.Room;
+import pollax.items.Item;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
-import pollax.items.Item;
-import pollax.world.Room;
 
 /**
  * @author      Jonathan Franzén, Hampus Widén

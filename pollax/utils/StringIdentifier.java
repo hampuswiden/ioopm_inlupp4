@@ -21,18 +21,20 @@ public class StringIdentifier {
 
 	public StringIdentifier() {
 	}
-
+	/////// FIX ME, CHECK COMPLETE WORDS
 	public String[] findCommand(String string) {
 		String command;
 		for (int i = 1; i <= string.length(); i++) {
 			command = string.substring(0, i);
 
 			if (Arrays.stream(this.commands).anyMatch(command::equals)) {
-				// throw if i+1 > string.length().
+				if (i+1 > string.length()) {
+					throw new InvalidInputException("\'" + string + "\'" + " needs an argument");
+				}
 				String argument = string.substring(i+1, string.length());
 				return new String[]{command, argument};
-			} 
+			}
 		}
-		return new String[]{"Error", "Couldn't find a Command"};
-	}	
+		throw new InvalidInputException("\'" + string + "\'" + " is not a valid command");
+	}
 }
