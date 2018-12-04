@@ -1,1 +1,4 @@
 Room 1357; X; X; X; Hallway 4; X; X; X; False
+Room 1360; X; X; X; Hallway 4; X; X; X; False
+Room 1365; X; X; X; Hallway 4; X; X; X; False
+Room 1370; X; X; X; Hallway 4; X; X; X; False

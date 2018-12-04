@@ -1,6 +1,6 @@
-build: build_course build_creature build_interactive build_item build_world
+build: build_course build_creature build_interactive build_item build_utils build_world
 	javac -d classes pollax/Game.java
-run: build
+run:
 	java -classpath classes pollax.Game
 build_course:
 	javac -d classes pollax/course/*.java
@@ -18,6 +18,10 @@ build_item:
 	javac -d classes pollax/items/*.java
 run_item: build_item
 	java -classpath classes pollax.items.Item
+build_utils:
+	javac -d classes pollax/utils/*.java
+run_utils: build_utils
+	java -classpath classes pollax.utils.Parse
 build_world:
 	javac -d classes pollax/world/*.java
 run_world: build_world

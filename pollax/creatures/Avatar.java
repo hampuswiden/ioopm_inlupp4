@@ -18,12 +18,17 @@ public class Avatar extends Creature {
 	private List<String> unfinishedCourses;
 	private List<String> finishedCourses;
 
-	public Avatar(String name) {
+	public Avatar(String name, Room startRoom) {
 		this.name = name;
+		this.room = startRoom;
 	}
 
 	@Override
 	public boolean isAvatar() {
 		return true;
+	}
+
+	public Room currentRoom() {
+		return this.room;
 	}
 }

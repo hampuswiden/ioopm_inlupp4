@@ -20,22 +20,26 @@ public class Room {
 	private List<Item> items;
 	private List<InteractiveObject> interactives;
 
-	public Room(String name, String north, String east, String south, String west, String northDoor, String eastDoor, String southDoor, String westDoor) {
-		this.name = name;
+	public Room() {
+
+	}
+	
+	public Room(String... args) {
+		this.name = args[0];
 
 		// Rooms
 		List<String> rooms = new ArrayList<String>();
-		rooms.add(north);
-		rooms.add(east);
-		rooms.add(south);
-		rooms.add(west);
+		rooms.add(args[1]);
+		rooms.add(args[2]);
+		rooms.add(args[3]);
+		rooms.add(args[4]);
 		this.rooms = rooms;
 
 		// Doors
-		Door nDoor = new Door(northDoor);
-		Door eDoor = new Door(eastDoor);
-		Door sDoor = new Door(southDoor);
-		Door wDoor = new Door(westDoor);
+		Door nDoor = new Door(args[5]);
+		Door eDoor = new Door(args[6]);
+		Door sDoor = new Door(args[7]);
+		Door wDoor = new Door(args[8]);
 
 		List<Door> doors = new ArrayList<Door>();
 		doors.add(nDoor);
@@ -44,5 +48,9 @@ public class Room {
 		doors.add(wDoor);
 		this.doors = doors;
 		
+	}
+
+	public String toString() {
+		return this.name;
 	}
 }

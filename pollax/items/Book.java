@@ -11,10 +11,14 @@ public class Book extends Item {
 	private String year;
 	private int capacity;
 
-	public Book(String name) {
-		this.title = title;
-		this.author = author;
-		this.year = year;
-		this.capacity = capacity;
+	public Book() {
+
+	}
+
+	public Book(String... args) {
+		this.title = args[0];
+		this.author = args[1];
+		this.year = args[2];
+		this.capacity = Integer.parseInt(args[3]);
 	}
 }

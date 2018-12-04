@@ -10,9 +10,13 @@ public class Course {
 	private String book;
 	private int hp;
 
-	public Course(String courseName, String book, String hp) {
-		this.courseName = courseName;
-		this.book = book;
-		this.hp = Integer.parseInt(hp);
+	public Course() {
+
+	}
+	
+	public Course(String... args) {
+		this.courseName = args[0];
+		this.book = args[1];
+		this.hp = Integer.parseInt(args[2]);
 	}
 }
