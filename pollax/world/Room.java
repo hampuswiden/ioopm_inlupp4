@@ -23,7 +23,7 @@ public class Room {
 	public Room() {
 
 	}
-	
+
 	public Room(String... args) {
 		this.name = args[0];
 
@@ -51,6 +51,41 @@ public class Room {
 	}
 
 	public String toString() {
-		return this.name;
+		return this.name + "\n" +
+		"N: " + this.rooms.get(0) +
+		" E: " + this.rooms.get(1) +
+		" S: " + this.rooms.get(2) +
+		" W: " + this.rooms.get(3);
 	}
+
+	public int getDirection(String direction) {
+		int door = -1;
+		if (direction.equals("north")) {
+			door = 0;
+		} else if (direction.equals("east")) {
+			door = 1;
+		} else if (direction.equals("south")) {
+			door = 2;
+		} else if (direction.equals("west")) {
+			door = 3;
+		} else {
+			// Error handling
+		}
+		return door;
+	}
+
+	public boolean checkDirection(String direction) {
+		int door = this.getDirection(direction);
+
+		if (!this.rooms.get(door).equals("X")) {
+			return this.doors.get(door).isOpen();
+		}
+		return false;
+	}
+
+	public String getRoom(String direction) {
+		int door = this.getDirection(direction);
+		return this.rooms.get(door);
+	}
+
 }

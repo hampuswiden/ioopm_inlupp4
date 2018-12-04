@@ -10,9 +10,9 @@ public class Door extends InteractiveObject {
 
 	public Door(String s) {
 		if (s.equals("True")) {
-			this.open = true;
-		} else {
 			this.open = false;
+		} else {
+			this.open = true;
 		}
 	}
 

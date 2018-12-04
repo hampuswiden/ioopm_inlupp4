@@ -2,6 +2,7 @@ package pollax.creatures;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 import pollax.items.Item;
 import pollax.world.Room;
 
@@ -30,5 +31,12 @@ public class Avatar extends Creature {
 
 	public Room currentRoom() {
 		return this.room;
+	}
+
+	public void go(String direction, HashMap<String, Room> dbRooms) {
+		if (this.room.checkDirection(direction)) {
+			String newRoom = this.room.getRoom(direction);
+			this.room = dbRooms.get(newRoom);
+		}
 	}
 }

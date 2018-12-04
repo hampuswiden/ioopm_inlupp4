@@ -3,10 +3,12 @@ package pollax;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.IOException;
 import pollax.course.*;
 import pollax.creatures.*;
 import pollax.interactive.*;
 import pollax.items.*;
+import pollax.utils.*;
 import pollax.world.*;
 
 public class Game {
@@ -19,26 +21,31 @@ public class Game {
 		World world = new World(dbRooms, dbCourses, dbBooks);
 
 		Room startRoom = world.randomRoom();
-		Avatar player = new Avatar("Ninja", startRoom);
-		System.out.println(player.currentRoom());
+		Avatar avatar = new Avatar("Ninja", startRoom);
+		System.out.println(avatar.currentRoom());
 
 
 		boolean loop = true;
+		StringIdentifier si = new StringIdentifier();
 
         System.out.println("Welcome to the PollaxMUD!");
 		while(loop) {
+			System.out.println(avatar.currentRoom());
 	        System.out.print("Input: ");
 	        String input = System.console().readLine();
-	        try {
-	        	String[] split = input.split(" ");
-	        	split[]
-	        	if (input.equals("go"))
-	            SymbolicExpression result = p.statement();
+	        String[] result = si.findCommand(input);
+	        String command = result[0];
+	        String argument = result[1];
+	        //System.out.println("command: " + command);
+	        //System.out.println("argument: " + argument);
 
-	        } catch(IOException e) {
-	        	expressions += 1;
-	            System.err.println("IO Exception!");
-	        } 
+	        if (command.equals("go")) {
+	        	avatar.go(argument, dbRooms);
+	        }
+
+
+
+
 		}
 		System.out.println("Program Terminated");
 	}
