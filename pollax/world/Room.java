@@ -19,9 +19,9 @@ public class Room {
 	private String name;
 	private List<String> rooms;
 	private List<Door> doors;
-	private List<Creature> creatures;
-	private List<Item> items;
-	private List<InteractiveObject> interactives;
+	private List<Creature> creatures = new ArrayList<Creature>();
+	private List<Item> items = new ArrayList<Item>();
+	private List<InteractiveObject> interactives = new ArrayList<InteractiveObject>();
 
 	public Room() {
 
@@ -54,11 +54,45 @@ public class Room {
 	}
 
 	public String toString() {
-		return this.name + "\n" +
+		String retStr = this.name + "\n" +
 		"N: " + this.rooms.get(0) +
 		" E: " + this.rooms.get(1) +
 		" S: " + this.rooms.get(2) +
 		" W: " + this.rooms.get(3);
+
+		// Creatures
+		retStr += "\nCreatures: ";
+		for (int counter = 0; counter < this.creatures.size(); counter++) {
+        	retStr += this.creatures.get(counter);
+        	if (counter != this.creatures.size()-1)
+        	{
+				retStr += ", ";
+        	}
+		}
+
+		// Items
+		retStr += "\nItems: ";
+		for (int counter = 0; counter < this.items.size(); counter++) {
+        	retStr += this.items.get(counter);
+        	if (counter != this.items.size()-1)
+        	{
+				retStr += ", ";
+        	}
+		}
+
+		// Not using interactives at the moment
+		/*
+		retStr += "\nInteractives: ";
+		for (int counter = 0; counter < this.interactives.size(); counter++) {
+        	retStr += this.interactives.get(counter);
+        	if (counter != this.interactives.size()-1)
+        	{
+				retStr += ", ";
+        	}
+		}
+		*/
+
+		return retStr;
 	}
 
 	public int getDirection(String direction) throws InvalidInputException {
@@ -81,7 +115,13 @@ public class Room {
 		int door = this.getDirection(direction);
 
 		if (!this.rooms.get(door).equals("X")) {
-			return this.doors.get(door).isOpen();
+			if (!this.doors.get(door).isOpen()) {
+				System.out.println("The " + direction + " door is locked.");
+			} else {
+				return true;
+			}
+		} else {
+			System.out.println("No room to the " + direction + ".");
 		}
 		return false;
 	}
@@ -91,4 +131,13 @@ public class Room {
 		return this.rooms.get(door);
 	}
 
+	public void addItem(Item item) {
+		this.items.add(item);
+	}
+
+	public void removeItem(Item item) {
+		if (this.items.contains(item)) {
+			this.items.remove(item);
+		}
+	}
 }

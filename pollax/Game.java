@@ -23,14 +23,15 @@ public class Game {
 		Room startRoom = world.randomRoom();
 		Avatar avatar = new Avatar("Ninja", startRoom);
 
-
-		boolean loop = true;
 		StringIdentifier si = new StringIdentifier();
 
         System.out.println("Welcome to the PollaxMUD!");
+		System.out.println(startRoom);
+		boolean loop = true;
+		
 		while(loop) {
 			try{
-						System.out.println(avatar.currentRoom());
+				System.out.println();
 		        System.out.print("Input: ");
 		        String input = System.console().readLine();
 		        String[] result = si.findCommand(input);

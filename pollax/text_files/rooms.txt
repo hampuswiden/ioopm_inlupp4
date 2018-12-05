@@ -2,4 +2,4 @@ Room 1357; Hallway 4; X; X; X; False; False; False; False
 Room 1360; X; Hallway 4; X; X; False; False; False; False
 Room 1365; X; X; Hallway 4; X; False; False; False; False
 Room 1370; X; X; X; Hallway 4; False; False; False; False
-Hallway 4; Room 1365; Room 1370; Room 1357; Room 1360; False; False; False; False
+Hallway 4; Room 1365; Room 1370; Room 1357; Room 1360; True; False; False; False

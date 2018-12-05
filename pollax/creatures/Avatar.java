@@ -36,8 +36,10 @@ public class Avatar extends Creature {
 
 	public void go(String direction, HashMap<String, Room> dbRooms) {
 		if (this.room.checkDirection(direction)) {
-			String newRoom = this.room.getRoom(direction);
-			this.room = dbRooms.get(newRoom);
+			String newRoomStr = this.room.getRoom(direction);
+			Room newRoom = dbRooms.get(newRoomStr);
+			this.room = newRoom;
+			System.out.println(newRoom);
 		}
 	}
 }

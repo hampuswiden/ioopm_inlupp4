@@ -6,13 +6,13 @@ package pollax.items;
  * @since       1.0
  */
 public class Key extends Item {
-	private boolean key;
 
-	public Key(String name) {
-		this.key = true;
+	public Key() {
+
 	}
 
-	public boolean keyActive() {
-		return this.key;
+	@Override
+	public String toString() {
+		return "Key";
 	}
 }

@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import pollax.utils.Parser;
 import pollax.course.Course;
-import pollax.items.Book;
+import pollax.items.*;
 import pollax.world.Room;
 
 /**
@@ -18,6 +18,7 @@ import pollax.world.Room;
  * @since       1.0
  */
 public class World {
+	WorldUtils wu = new WorldUtils();
 	HashMap<String, Room> dbRooms;
 	HashMap<String, Course> dbCourses;
 	HashMap<String, Book> dbBooks;
@@ -52,6 +53,14 @@ public class World {
 		p.parse(pathBooks);
 		Book instanceOfBook = new Book();
 		p.generateDB(instanceOfBook, dbBooks);
+
+		// Generate Keys
+		int noKeys = 5;
+		for (int keys = noKeys; keys > 0; keys--) {
+			Key key = new Key();
+			Room randomRoom = this.wu.randomRoom(dbRooms);
+			randomRoom.addItem(key);
+		}
 	}
 
 	public static void main(String[] args) {
@@ -64,17 +73,6 @@ public class World {
 	}
 
 	public Room randomRoom() {
-		Random rand = new Random();
-		int n = rand.nextInt(this.size()); // this.size() is the maximum and the 1 is our minimum.
-
-		int i = 0;
-		for (Object key : this.dbRooms.keySet()) {
-    		//System.out.println(key + " = " + this.dbRooms.get(key));
-    		if (i == n) {
-    			return this.dbRooms.get(key);
-    		}
-    		i++;
-    	}	
-		return new Room("FUCKED UP", "X", "X", "X", "X", "X", "X", "X", "X");
+		return this.wu.randomRoom(this.dbRooms);
 	}
 }
