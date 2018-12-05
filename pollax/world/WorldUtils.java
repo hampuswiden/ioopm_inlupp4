@@ -33,12 +33,26 @@ public class WorldUtils {
 
 		int i = 0;
 		for (Object key : db.keySet()) {
-    		//System.out.println(key + " = " + db.get(key));
     		if (i == n) {
     			return db.get(key);
     		}
     		i++;
     	}	
 		return new Room("FUCKED UP", "X", "X", "X", "X", "X", "X", "X", "X");
+	}
+
+	public int noLockedDoors(HashMap<String, Room> db) {
+		Room room;
+		int noLockedDoors = 0;
+		String[] directions = {"north", "east", "south", "west"};
+		for (Object key : db.keySet()) {
+			room = db.get(key);
+			for (int i = 0; i < directions.length; i++) {
+				if (!room.checkDirectionDoor(directions[i])) {
+					noLockedDoors += 1;
+				}
+			} 
+    	}
+    	return noLockedDoors;
 	}
 }

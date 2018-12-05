@@ -9,7 +9,6 @@ public class Book extends Item {
 	private String title;
 	private String author;
 	private String year;
-	private int capacity;
 
 	public Book() {
 
@@ -19,6 +18,14 @@ public class Book extends Item {
 		this.title = args[0];
 		this.author = args[1];
 		this.year = args[2];
-		this.capacity = Integer.parseInt(args[3]);
+		super.setCapacity(Integer.parseInt(args[3]));
+	}
+
+	@Override
+	public String toString() {
+		return "Title: " + this.title +
+		", Author: " + this.author + 
+		", Year: " + this.year +
+		", Capacity: " + super.getCapacity();
 	}
 }

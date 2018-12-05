@@ -21,9 +21,9 @@ public class World {
 	WorldUtils wu = new WorldUtils();
 	HashMap<String, Room> dbRooms;
 	HashMap<String, Course> dbCourses;
-	HashMap<String, Book> dbBooks;
+	HashMap<String, Item> dbItems;
 
-	public World(HashMap<String, Room> dbRooms, HashMap<String, Course> dbCourses, HashMap<String, Book> dbBooks) {
+	public World(HashMap<String, Room> dbRooms, HashMap<String, Course> dbCourses, HashMap<String, Item> dbItems) {
 		/*
 		Room r1 = new Room("Room 137", "Room 140", "X", "X", "X", "True", "X", "X", "X");
 		Room r2 = new Room("Room 140", "X", "X", "Room 137", "X", "X", "X", "True", "X");
@@ -32,7 +32,7 @@ public class World {
 		*/
 		this.dbRooms = dbRooms;
 		this.dbCourses = dbCourses;
-		this.dbBooks = dbBooks;
+		this.dbItems = dbItems;
 
 		Parser p = new Parser();
 
@@ -52,15 +52,24 @@ public class World {
 		String pathBooks = "./pollax/text_files/books.txt";
 		p.parse(pathBooks);
 		Book instanceOfBook = new Book();
-		p.generateDB(instanceOfBook, dbBooks);
+		p.generateDB(instanceOfBook, dbItems);
 
 		// Generate Keys
-		int noKeys = 5;
+		int noLockedDoors = this.wu.noLockedDoors(dbRooms);
+
+		int noKeys = (int) Math.round(noLockedDoors * 1.5);
+		System.out.println(noLockedDoors + " " + noKeys);
+		Key dbKey = new Key();
+		dbItems.put("key", dbKey);
+
 		for (int keys = noKeys; keys > 0; keys--) {
 			Key key = new Key();
 			Room randomRoom = this.wu.randomRoom(dbRooms);
 			randomRoom.addItem(key);
 		}
+
+		
+		
 	}
 
 	public static void main(String[] args) {

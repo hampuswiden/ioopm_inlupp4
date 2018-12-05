@@ -95,6 +95,16 @@ public class Room {
 		return retStr;
 	}
 
+	public void addItem(Item item) {
+		this.items.add(item);
+	}
+
+	public void removeItem(Item item) {
+		if (this.items.contains(item)) {
+			this.items.remove(item);
+		}
+	}
+
 	public int getDirection(String direction) throws InvalidInputException {
 		int door = -1;
 		if (direction.equals("north")) {
@@ -112,16 +122,23 @@ public class Room {
 	}
 
 	public boolean checkDirection(String direction) {
+		return checkDirectionRoom(direction) && checkDirectionDoor(direction);
+	}
+
+	public boolean checkDirectionRoom(String direction) {
 		int door = this.getDirection(direction);
 
 		if (!this.rooms.get(door).equals("X")) {
-			if (!this.doors.get(door).isOpen()) {
-				System.out.println("The " + direction + " door is locked.");
-			} else {
-				return true;
-			}
-		} else {
-			System.out.println("No room to the " + direction + ".");
+			return true;
+		}
+		return false;
+	}
+
+	public boolean checkDirectionDoor(String direction) {
+		int door = this.getDirection(direction);
+
+		if (this.doors.get(door).isOpen()) {
+			return true;
 		}
 		return false;
 	}
@@ -131,13 +148,14 @@ public class Room {
 		return this.rooms.get(door);
 	}
 
-	public void addItem(Item item) {
-		this.items.add(item);
+	public List<Item> getItems() {
+		return this.items;
 	}
+	public void openDoor(String direction) {
+		int door = this.getDirection(direction);
 
-	public void removeItem(Item item) {
-		if (this.items.contains(item)) {
-			this.items.remove(item);
-		}
+		if (this.checkDirectionRoom(direction) && !this.checkDirectionDoor(direction)) {
+			this.doors.get(door).open();
+		} 
 	}
 }

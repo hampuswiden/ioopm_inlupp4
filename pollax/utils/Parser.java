@@ -32,6 +32,7 @@ public class Parser {
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 			while((line = br.readLine()) != null){
+				line.toLowerCase();
 				String[] split = line.split("; ");
 				String name = split[0];
 

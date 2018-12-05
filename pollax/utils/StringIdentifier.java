@@ -8,14 +8,16 @@ public class StringIdentifier {
 		"go",
 		"talk",
 		"drop",
-		"inventory",
 		"enroll",
 		"trade",
-		"graduate",
 		"pick up",
 		"use key with"};
 
 
+	private String[] noArgument = new String[]{
+		"inventory", 
+		"graduate"
+	};
 
 
 
@@ -33,6 +35,13 @@ public class StringIdentifier {
 				}
 				String argument = string.substring(i+1, string.length());
 				return new String[]{command, argument};
+			} else {
+				if (Arrays.stream(this.noArgument).anyMatch(command::equals)) {
+					if (command.length() == string.length()) {
+						return new String[]{command, ""};
+					}
+				}
+				
 			}
 		}
 		throw new InvalidInputException("\'" + string + "\'" + " is not a valid command");

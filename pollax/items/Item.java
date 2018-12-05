@@ -6,9 +6,16 @@ package pollax.items;
  * @since       1.0
  */
 public class Item {
-	private String name = "item";
+	private int capacity;
 
 	public static void main(String[] args) {
 		System.out.println("item");
+	}
+
+	public int getCapacity() {
+		return this.capacity;
+	}
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
 	}
 }
