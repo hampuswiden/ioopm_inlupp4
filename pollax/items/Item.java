@@ -8,10 +8,6 @@ package pollax.items;
 public class Item {
 	private int capacity;
 
-	public static void main(String[] args) {
-		System.out.println("item");
-	}
-
 	public int getCapacity() {
 		return this.capacity;
 	}

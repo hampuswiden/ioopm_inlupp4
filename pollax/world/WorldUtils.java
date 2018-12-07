@@ -38,7 +38,7 @@ public class WorldUtils {
     		}
     		i++;
     	}	
-		return new Room("FUCKED UP", "X", "X", "X", "X", "X", "X", "X", "X");
+		return new Room();
 	}
 
 	public int noLockedDoors(HashMap<String, Room> db) {

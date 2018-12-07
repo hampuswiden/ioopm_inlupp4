@@ -1,6 +1,6 @@
 package pollax.creatures;
 
-import pollax.world.Room;
+import pollax.world.*;
 import pollax.items.*;
 import pollax.course.Course;
 
@@ -25,6 +25,10 @@ public class Student extends Creature {
 		this.room = startRoom;
 	}
 
+	public boolean isStudent() {
+		return true;
+	}
+
 	public Room getRoom() {
 		return this.room;
 	}
@@ -43,11 +47,11 @@ public class Student extends Creature {
 		}
 	}
 
-	public void go(String direction, HashMap<String, Room> dbRooms) {
+	public void go(String direction, World world) {
 		if (this.room.checkDirectionRoom(direction)) {
 			if (this.room.checkDirectionDoor(direction)) {
 				String newRoomStr = this.room.getRoom(direction);
-				Room newRoom = dbRooms.get(newRoomStr);
+				Room newRoom = world.dbRooms().get(newRoomStr);
 				this.room = newRoom;
 				if (this.isAvatar()) {
 					System.out.println(newRoom);

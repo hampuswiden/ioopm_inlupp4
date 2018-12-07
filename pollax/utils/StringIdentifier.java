@@ -32,9 +32,13 @@ public class StringIdentifier {
 			if (Arrays.stream(this.commands).anyMatch(command::equals)) {
 				if (i+1 > string.length()) {
 					throw new InvalidInputException("\'" + string + "\'" + " needs an argument");
+				} else {
+					if (!string.substring(i, i+1).equals(" ")) {
+						throw new InvalidInputException("\'" + string + "\'" + " is not a valid command");
+					}
+					String argument = string.substring(i+1, string.length());
+					return new String[]{command, argument};
 				}
-				String argument = string.substring(i+1, string.length());
-				return new String[]{command, argument};
 			} else {
 				if (Arrays.stream(this.noArgument).anyMatch(command::equals)) {
 					if (command.length() == string.length()) {

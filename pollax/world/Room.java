@@ -105,6 +105,20 @@ public class Room {
 		}
 	}
 
+	public void addCreature(Creature creature) {
+		this.creatures.add(creature);
+	}
+
+	public void removeCreature(Creature creature) {
+		if (this.creatures.contains(creature)) {
+			this.creatures.remove(creature);
+		}
+	}
+
+	public boolean hasCreatures() {
+		return this.creatures.size() != 0;
+	}
+
 	public int getDirection(String direction) throws InvalidInputException {
 		int door = -1;
 		if (direction.equals("north")) {
@@ -116,7 +130,7 @@ public class Room {
 		} else if (direction.equals("west")) {
 			door = 3;
 		} else {
-			throw new InvalidInputException(direction + " is not a valid direction");
+			throw new InvalidInputException("'" + direction + "' is not a valid direction");
 		}
 		return door;
 	}
@@ -151,6 +165,7 @@ public class Room {
 	public List<Item> getItems() {
 		return this.items;
 	}
+
 	public void openDoor(String direction) {
 		int door = this.getDirection(direction);
 

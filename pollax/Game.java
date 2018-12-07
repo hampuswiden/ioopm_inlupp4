@@ -14,11 +14,7 @@ import pollax.world.*;
 public class Game {
 
 	public static void main(String[] args) {
-		HashMap<String, Room> dbRooms = new HashMap<String, Room>();
-		HashMap<String, Course> dbCourses = new HashMap<String, Course>();
-		HashMap<String, Item> dbItems = new HashMap<String, Item>();
-
-		World world = new World(dbRooms, dbCourses, dbItems);
+		World world = new World();
 
 		Room startRoom = world.randomRoom();
 		Avatar avatar = new Avatar("Ninja", startRoom);
@@ -37,19 +33,17 @@ public class Game {
 		        String[] result = si.findCommand(input);
 		        String command = result[0];
 		        String argument = result[1];
-		        //System.out.println("command: " + command);
-		        //System.out.println("argument: " + argument);
 
 		        if (command.equals("go")) {
-		        	avatar.go(argument, dbRooms);
+		        	avatar.go(argument, world);
 		        } else if (command.equals("use key with")) {
 		        	avatar.openDoor(argument);
 		        } else if (command.equals("pick up")) {
-		        	avatar.pickUp(argument, dbItems);
+		        	avatar.pickUp(argument, world);
 		        } else if (command.equals("inventory")) {
 		        	avatar.inventory();
 		        } else if (command.equals("drop")) {
-		        	avatar.drop(argument, dbItems);
+		        	avatar.drop(argument, world);
 		        }
 
 				} catch(InvalidInputException e) {

@@ -1,6 +1,6 @@
 package pollax.creatures;
 
-import pollax.world.Room;
+import pollax.world.*;
 import pollax.items.*;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class Avatar extends Student {
 	private int hp = 60;
-	private int capacity = 10;
+	private int maxCapacity = 10;
 
 	public Avatar(String name, Room startRoom) {
 		super(name, startRoom);
@@ -29,8 +29,8 @@ public class Avatar extends Student {
 		return super.getRoom();
 	}
 
-	public void go(String direction, HashMap<String, Room> dbRooms) {
-		super.go(direction, dbRooms);
+	public void go(String direction, World world) {
+		super.go(direction, world);
 	}
 
 	public void openDoor(String direction) {
@@ -55,8 +55,8 @@ public class Avatar extends Student {
 		}
 	}
 
-	public void pickUp(String itemName, HashMap<String, Item> dbItems) {
-		Item item = dbItems.get(itemName);
+	public void pickUp(String itemName, World world) {
+		Item item = world.dbItems().get(itemName);
 		Room room = super.getRoom();
 		List<Item> roomItems = room.getItems();
 
@@ -69,12 +69,12 @@ public class Avatar extends Student {
 				System.out.println("Not enough capacity.");	
 			}
 		} else {
-			System.out.println(itemName + " does not exist.");
+			System.out.println("No item '" + itemName + "' in the room.");
 		}
 	}
 
-	public void drop(String itemName, HashMap<String, Item> dbItems) {
-		Item item = dbItems.get(itemName);
+	public void drop(String itemName, World world) {
+		Item item = world.dbItems().get(itemName);
 
 		List<Item> items = super.getItems();
 		Room room = super.getRoom();
@@ -93,16 +93,16 @@ public class Avatar extends Student {
 		List<Item> items = super.getItems();
 
 		Item item;
-		int totalCapacity = 0;
+		int sumCapacity = 0;
 		for (int i = 0; i < items.size(); i++) {
 			item = items.get(i);
-			totalCapacity += item.getCapacity();
+			sumCapacity += item.getCapacity();
 		} 
-		return totalCapacity;
+		return sumCapacity;
 	}
 
 	public boolean checkCapacity(Item item) {
-		return this.currentCapacity() + item.getCapacity() <= this.capacity;
+		return this.currentCapacity() + item.getCapacity() <= this.maxCapacity;
 	}
 
 	public void inventory() {
@@ -118,7 +118,7 @@ public class Avatar extends Student {
 				retStr += ", ";
         	}
 		}
-		retStr += "\nCapacity: " + this.currentCapacity() + "/" + this.capacity;
+		retStr += "\nCapacity: " + this.currentCapacity() + "/" + this.maxCapacity;
 		System.out.println(retStr);
 	}
 }

@@ -1,5 +1,8 @@
 package pollax.course;
 
+import java.util.HashMap;
+
+import pollax.items.Book;
 /**
  * @author      Jonathan Franzén, Hampus Widén
  * @version     1.0
@@ -7,16 +10,17 @@ package pollax.course;
  */
 public class Course {
 	private String courseName;
-	private String book;
+	private Book book;
 	private int hp;
 
 	public Course() {
 
 	}
 	
-	public Course(String... args) {
+	public <T> Course(HashMap<String, T> dbBooks, String... args) {
 		this.courseName = args[0];
-		this.book = args[1];
+		T book = dbBooks.get(args[1]);
+		this.book = (Book) book;
 		this.hp = Integer.parseInt(args[2]);
 	}
 }

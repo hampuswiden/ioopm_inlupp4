@@ -10,4 +10,12 @@ public class Creature {
 	public boolean isAvatar() {
 		return false;
 	}
+
+	public boolean isTeacher() {
+		return false;
+	}
+
+	public boolean isStudent() {
+		return false;
+	}
 }
