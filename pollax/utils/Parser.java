@@ -33,13 +33,12 @@ public class Parser {
 			BufferedReader br = new BufferedReader(fr);
 			String line;
 			while((line = br.readLine()) != null){
-				line.toLowerCase();
 				String[] split = line.split("; ");
-				String name = split[0];
+				String name = split[0].toLowerCase();
 
 	    		if (instance instanceof Room) {
 	    			Room room = new Room(split);
-	    			db.put(name, (T) room);
+	    			db.put(split[0], (T) room);
 	    		} else if (instance instanceof Book) {
 	    			Book book = new Book(split);
 	    			db.put(name, (T) book);

@@ -18,6 +18,7 @@ import pollax.world.Room;
  * @since       1.0
  */
 public class WorldUtils {
+	private Random rand = new Random();
 
 	public WorldUtils() {
 
@@ -27,14 +28,18 @@ public class WorldUtils {
 		return db.size();
 	}
 
+	public boolean random(int chance) {
+		int n = this.rand.nextInt(100);
+		return n < chance;
+	}
+
 	public Room randomRoom(HashMap<String, Room> db) {
-		Random rand = new Random();
-		int n = rand.nextInt(db.size()); // this.size() is the maximum and the 1 is our minimum.
+		int n = this.rand.nextInt(db.size()); // this.size() is the maximum and 0 is our minimum.
 
 		int i = 0;
-		for (Object key : db.keySet()) {
+		for (Room room : db.values()) {
     		if (i == n) {
-    			return db.get(key);
+    			return room;
     		}
     		i++;
     	}	
@@ -42,11 +47,9 @@ public class WorldUtils {
 	}
 
 	public int noLockedDoors(HashMap<String, Room> db) {
-		Room room;
 		int noLockedDoors = 0;
 		String[] directions = {"north", "east", "south", "west"};
-		for (Object key : db.keySet()) {
-			room = db.get(key);
+		for (Room room : db.values()) {
 			for (int i = 0; i < directions.length; i++) {
 				if (!room.checkDirectionDoor(directions[i])) {
 					noLockedDoors += 1;

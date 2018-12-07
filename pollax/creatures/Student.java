@@ -25,6 +25,10 @@ public class Student extends Creature {
 		this.room = startRoom;
 	}
 
+	public String toString() {
+		return "(S) " + this.name;
+	}
+
 	public boolean isStudent() {
 		return true;
 	}
@@ -47,6 +51,14 @@ public class Student extends Creature {
 		}
 	}
 
+	public List<Course> getUnfinishedCourses() {
+		return this.unfinishedCourses;
+	}
+
+	public List<Course> getFinishedCourses() {
+		return this.finishedCourses;
+	}
+
 	public void go(String direction, World world) {
 		if (this.room.checkDirectionRoom(direction)) {
 			if (this.room.checkDirectionDoor(direction)) {
@@ -62,5 +74,9 @@ public class Student extends Creature {
 		} else if (this.isAvatar()) {
 			System.out.println("No room to the " + direction + ".");
 		}
+	}
+
+	public void talk() {
+		System.out.println("Hey I'm " + this.name + ".");
 	}
 }

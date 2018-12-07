@@ -2,12 +2,12 @@ package pollax.world;
 
 import java.util.List;
 import java.util.ArrayList;
-import pollax.creatures.Creature;
+import java.io.IOException;
+
+import pollax.creatures.*;
 import pollax.interactive.InteractiveObject;
 import pollax.interactive.Door;
 import pollax.items.Item;
-
-import java.io.IOException;
 import pollax.utils.InvalidInputException;
 
 /**
@@ -64,8 +64,7 @@ public class Room {
 		retStr += "\nCreatures: ";
 		for (int counter = 0; counter < this.creatures.size(); counter++) {
         	retStr += this.creatures.get(counter);
-        	if (counter != this.creatures.size()-1)
-        	{
+        	if (counter != this.creatures.size()-1) {
 				retStr += ", ";
         	}
 		}
@@ -74,8 +73,7 @@ public class Room {
 		retStr += "\nItems: ";
 		for (int counter = 0; counter < this.items.size(); counter++) {
         	retStr += this.items.get(counter);
-        	if (counter != this.items.size()-1)
-        	{
+        	if (counter != this.items.size()-1) {
 				retStr += ", ";
         	}
 		}
@@ -85,14 +83,17 @@ public class Room {
 		retStr += "\nInteractives: ";
 		for (int counter = 0; counter < this.interactives.size(); counter++) {
         	retStr += this.interactives.get(counter);
-        	if (counter != this.interactives.size()-1)
-        	{
+        	if (counter != this.interactives.size()-1) {
 				retStr += ", ";
         	}
 		}
 		*/
 
 		return retStr;
+	}
+
+	public List<Item> getItems() {
+		return this.items;
 	}
 
 	public void addItem(Item item) {
@@ -103,6 +104,10 @@ public class Room {
 		if (this.items.contains(item)) {
 			this.items.remove(item);
 		}
+	}
+
+	public List<Creature> getCreatures() {
+		return this.creatures;
 	}
 
 	public void addCreature(Creature creature) {
@@ -117,6 +122,28 @@ public class Room {
 
 	public boolean hasCreatures() {
 		return this.creatures.size() != 0;
+	}
+
+	public boolean hasTeacher() {
+		Creature creature;
+		for (int i = 0; i < this.creatures.size(); i++) {
+        	creature = this.creatures.get(i);
+        	if (creature.isTeacher()) {
+        		return true;
+        	}
+		}
+		return false;
+	}
+
+	public Teacher getTeacher() {
+		Creature creature;
+		for (int i = 0; i < this.creatures.size(); i++) {
+        	creature = this.creatures.get(i);
+        	if (creature.isTeacher()) {
+        		return (Teacher) creature;
+        	}
+		}
+		return new Teacher();
 	}
 
 	public int getDirection(String direction) throws InvalidInputException {
@@ -162,15 +189,24 @@ public class Room {
 		return this.rooms.get(door);
 	}
 
-	public List<Item> getItems() {
-		return this.items;
-	}
-
 	public void openDoor(String direction) {
 		int door = this.getDirection(direction);
 
 		if (this.checkDirectionRoom(direction) && !this.checkDirectionDoor(direction)) {
 			this.doors.get(door).open();
 		} 
+	}
+
+	@Override
+	public boolean equals(Object other) {
+	    if (other instanceof Room) {
+	        return this.equals((Room) other);
+	    } else {
+	        return false;
+	    }
+	}
+
+	public boolean equals(Room other) {
+		return this.name.equals(other.name);
 	}
 }

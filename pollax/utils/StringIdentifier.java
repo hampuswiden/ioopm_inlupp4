@@ -16,7 +16,8 @@ public class StringIdentifier {
 
 	private String[] noArgument = new String[]{
 		"inventory", 
-		"graduate"
+		"graduate",
+		"courseinfo"
 	};
 
 

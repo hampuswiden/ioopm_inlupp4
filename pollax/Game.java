@@ -44,6 +44,12 @@ public class Game {
 		        	avatar.inventory();
 		        } else if (command.equals("drop")) {
 		        	avatar.drop(argument, world);
+		        } else if (command.equals("talk")) {
+		        	avatar.talk(argument, world);
+		        } else if (command.equals("enroll")) {
+		        	avatar.enroll(argument, world);
+		        } else if (command.equals("courseinfo")) {
+		        	avatar.courseInfo();
 		        }
 
 				} catch(InvalidInputException e) {

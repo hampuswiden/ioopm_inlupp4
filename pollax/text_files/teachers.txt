@@ -1,4 +1,4 @@
-Per Andersson; Folklivsforskning 101; Fråga; Svar1; Svar2; Svar3; KorrektSvar
+Per Andersson; Folklivsforskning 101; Vart ifrån kommer Zlatan?; Bosnien; Kroatien; Sverige; Sverige
 Professor Oak; Pokémonjakt 1; Which is the best starter Pokémon?; Charmander; Squirtle; Bulbasaur; Squirtle
 Karl Stenmark; Flerkonstantanalys 2; Vad är lim x->0+ 1/x?; Odef.; Infinity; -Infinity; Infinity
 Liv "Skolan" Hård; Motivation till att plugga 3; Vad gör man istället för att plugga?; Städar; Gymmar; Sover; Sover

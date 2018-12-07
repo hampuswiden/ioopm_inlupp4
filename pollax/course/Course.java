@@ -19,8 +19,29 @@ public class Course {
 	
 	public <T> Course(HashMap<String, T> dbBooks, String... args) {
 		this.courseName = args[0];
-		T book = dbBooks.get(args[1]);
+		T book = dbBooks.get(args[1].toLowerCase());
 		this.book = (Book) book;
 		this.hp = Integer.parseInt(args[2]);
+	}
+
+	public String toString() {
+		return this.courseName;
+	}
+
+	public int getHp() {
+		return this.hp;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+	    if (other instanceof Course) {
+	        return this.equals((Course) other);
+	    } else {
+	        return false;
+	    }
+	}
+
+	public boolean equals(Course other) {
+		return this.courseName.equals(other.courseName);
 	}
 }

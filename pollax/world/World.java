@@ -19,11 +19,11 @@ import pollax.creatures.*;
  * @since       1.0
  */
 public class World {
-	WorldUtils wu = new WorldUtils();
-	HashMap<String, Room> dbRooms;
-	HashMap<String, Course> dbCourses;
-	HashMap<String, Item> dbItems;
-	HashMap<String, Creature> dbCreatures;
+	private WorldUtils wu = new WorldUtils();
+	private HashMap<String, Room> dbRooms;
+	private HashMap<String, Course> dbCourses;
+	private HashMap<String, Item> dbItems;
+	private HashMap<String, Creature> dbCreatures;
 
 	public World() {
 		HashMap<String, Room> dbRooms = new HashMap<String, Room>();
@@ -64,7 +64,7 @@ public class World {
 		// Loop through Teachers and put them into random rooms
 		for (Creature teacher : dbCreatures.values()) {
     		Room room = this.wu.randomRoom(dbRooms);
-    		while (room.hasCreatures()) { // Only 1 teacher per room maximum
+    		while (room.hasTeacher()) { // Only 1 teacher per room maximum
     			room = this.wu.randomRoom(dbRooms);
     		}
     		room.addCreature((Teacher) teacher);
@@ -91,7 +91,19 @@ public class World {
 		return this.dbItems;
 	}
 
+	public HashMap<String, Course> dbCourses() {
+		return this.dbCourses;
+	}
+
+	public HashMap<String, Creature> dbCreatures() {
+		return this.dbCreatures;
+	}
+
 	public Room randomRoom() {
 		return this.wu.randomRoom(this.dbRooms);
+	}
+
+	public boolean random(int chance) {
+		return this.wu.random(chance);
 	}
 }
