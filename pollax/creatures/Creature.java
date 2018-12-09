@@ -7,6 +7,8 @@ package pollax.creatures;
  */
 public abstract class Creature {
 
+	//public Room getRoom()
+
 	public boolean isAvatar() {
 		return false;
 	}

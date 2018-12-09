@@ -42,7 +42,7 @@ public class WorldUtils {
     			return room;
     		}
     		i++;
-    	}	
+    	}
 		return new Room();
 	}
 
@@ -54,7 +54,7 @@ public class WorldUtils {
 				if (!room.checkDirectionDoor(directions[i])) {
 					noLockedDoors += 1;
 				}
-			} 
+			}
     	}
     	return noLockedDoors;
 	}

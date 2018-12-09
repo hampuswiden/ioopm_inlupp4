@@ -16,7 +16,7 @@ public class Course {
 	public Course() {
 
 	}
-	
+
 	public <T> Course(HashMap<String, T> dbBooks, String... args) {
 		this.courseName = args[0];
 		T book = dbBooks.get(args[1].toLowerCase());
@@ -26,6 +26,10 @@ public class Course {
 
 	public String toString() {
 		return this.courseName;
+	}
+
+	public Book getCouseBook(){
+		return this.book;
 	}
 
 	public int getHp() {

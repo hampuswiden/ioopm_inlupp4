@@ -12,6 +12,7 @@ import pollax.utils.Parser;
 import pollax.course.Course;
 import pollax.items.*;
 import pollax.creatures.*;
+import java.lang.reflect.Array;
 
 /**
  * @author      Jonathan Franzén, Hampus Widén
@@ -70,6 +71,22 @@ public class World {
     		room.addCreature((Teacher) teacher);
 		}
 
+		// Generate Students
+		String pathStudents = "./pollax/text_files/students.txt";
+		p.parse(pathStudents);
+		Student instanceOfStudent = new Student();
+		p.generateDB(instanceOfStudent, dbCreatures, dbCourses);
+
+		// Loop through Students and put them into random rooms
+		for (Creature cStudent : dbCreatures.values()) {
+    		Room room = this.wu.randomRoom(dbRooms);
+				if(cStudent instanceof Student){
+					Student student = (Student) cStudent;
+					student.assignRoom(room);
+    			room.addCreature((Student) student);
+				}
+		}
+
 		// Generate keys in random rooms
 		int noLockedDoors = this.wu.noLockedDoors(dbRooms);
 		int noKeys = (int) Math.round(noLockedDoors * 1.5);
@@ -80,6 +97,33 @@ public class World {
 			Key key = new Key();
 			Room randomRoom = this.wu.randomRoom(dbRooms);
 			randomRoom.addItem(key);
+		}
+	}
+
+	public void moveStudents() {
+		int studentGoChance = 50;
+		int direction;
+		String directions[] = {"north", "east", "south", "west"};
+		boolean moved;
+		boolean moveChance;
+		for (Creature cStudent : this.dbCreatures().values()) {
+				//Room room = this.wu.randomRoom(dbRooms);
+				if((cStudent instanceof Student) && !(cStudent instanceof Avatar)){
+					Student student = (Student) cStudent;
+					moveChance = this.random(studentGoChance);
+					if (moveChance && student.getRoom().checkAllDirections()){
+						moved = false;
+						while (moved == false) {
+							direction = (int) (Math.random()*4);
+							if(student.getRoom().checkDirection((String) Array.get(directions, direction)) == true) {
+								student.getRoom().removeCreature(student);
+								student.go((String) Array.get(directions, direction), this);
+								student.getRoom().addCreature((Creature) student);
+								moved = true;
+							}
+						}
+					}
+				}
 		}
 	}
 

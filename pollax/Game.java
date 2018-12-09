@@ -10,6 +10,7 @@ import pollax.interactive.*;
 import pollax.items.*;
 import pollax.utils.*;
 import pollax.world.*;
+import java.lang.reflect.Array;
 
 public class Game {
 
@@ -34,7 +35,9 @@ public class Game {
 		        String command = result[0];
 		        String argument = result[1];
 
+
 		        if (command.equals("go")) {
+							world.moveStudents();
 		        	avatar.go(argument, world);
 		        } else if (command.equals("use key with")) {
 		        	avatar.openDoor(argument);

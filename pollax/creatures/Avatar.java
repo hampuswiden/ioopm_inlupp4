@@ -46,7 +46,7 @@ public class Avatar extends Student {
 			Teacher teacher = newRoom.getTeacher();
 			Course course = teacher.getCourse();
 
-			int percentage = 0; 
+			int percentage = 0;
 			if (unfinishedCourses.contains(course)) {
 				percentage = 75;
 			} else if (finishedCourses.contains(course)) {
@@ -78,7 +78,7 @@ public class Avatar extends Student {
 					super.removeItem(key);
 					System.out.println("Succesfully opened the " + direction + " door.");
 				} else {
-					System.out.println("No key(s) in inventory!");	
+					System.out.println("No key(s) in inventory!");
 				}
 			} else {
 				System.out.println("The " + direction + " door is already open.");
@@ -99,7 +99,7 @@ public class Avatar extends Student {
 				room.removeItem(item);
 				System.out.println("Picked up " + item);
 			} else {
-				System.out.println("Not enough capacity.");	
+				System.out.println("Not enough capacity.");
 			}
 		} else {
 			System.out.println("No item '" + itemName + "' in the room.");
@@ -130,7 +130,7 @@ public class Avatar extends Student {
 		for (int i = 0; i < items.size(); i++) {
 			item = items.get(i);
 			sumCapacity += item.getCapacity();
-		} 
+		}
 		return sumCapacity;
 	}
 
@@ -182,7 +182,13 @@ public class Avatar extends Student {
 		Room room = super.getRoom();
 		List<Creature> roomCreatures = room.getCreatures();
 		if (roomCreatures.contains(creature)) {
-			creature.talk();
+			if (creature.isStudent()){
+				Student student = (Student) creature;
+				student.talk(this);
+			} else {
+				creature.talk();
+			}
+
 		} else {
 			System.out.println("No person called '" + creatureName + "' in the room.");
 		}

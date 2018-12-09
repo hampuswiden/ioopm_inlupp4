@@ -48,8 +48,11 @@ public class Parser {
 	    		} else if (instance instanceof Teacher) {
 	    			Teacher teacher = new Teacher(dbHelp, split);
 	    			db.put(name, (T) teacher);
+					} else if (instance instanceof Student) {
+						Student student = new Student(dbHelp, split);
+						db.put(name, (T) student);
 				} else {
-					// Error handling			
+					// Error handling
 				}
 			}
 		} catch(IOException e) {

@@ -20,9 +20,19 @@ public class Student extends Creature {
 	private List<Course> unfinishedCourses = new ArrayList<Course>();
 	private List<Course> finishedCourses = new ArrayList<Course>();
 
+	public Student(){}
+
 	public Student(String name, Room startRoom) {
 		this.name = name;
 		this.room = startRoom;
+	}
+
+	public <T> Student(HashMap<String, T> dbCourses, String... args) {
+		this.name = args[0];
+		T finishedCourse = dbCourses.get(args[1].toLowerCase());
+		T unfinishedCourse = dbCourses.get(args[2].toLowerCase());
+		this.finishedCourses.add((Course) finishedCourse);
+		this.unfinishedCourses.add((Course) unfinishedCourse);
 	}
 
 	public String toString() {
@@ -31,6 +41,39 @@ public class Student extends Creature {
 
 	public boolean isStudent() {
 		return true;
+	}
+
+	public void assignRoom(Room room) {
+		this.room = room;
+	}
+
+//Hämta namnet på boken?
+	public void talk(Avatar avatar) {
+		Book wantedBook = this.unfinishedCourses.get(0).getCouseBook();
+		List<Item> avatarItems = avatar.getItems();
+
+		if(this.items.contains(wantedBook)){
+			System.out.println("Hi, thanks again for the book. I don't know what I'd have done without it!");
+			return;
+		}
+
+		System.out.println(
+		this.name +
+		": Hi! I'm currently studying " +
+		this.unfinishedCourses.get(0) +
+		"... However, I lost my book.");
+		if (avatar.getItems().contains(wantedBook)){
+			System.out.print(".. Wait, is that " +
+			wantedBook +
+			" sticking out of your bag? If you trade it to me, I'd be willing to give you ");
+			if(this.items.size()==1){
+				System.out.print(this.items.get(0));
+			} else {
+				System.out.print("some tips for the quiz in " + this.finishedCourses.get(0));
+			}
+		} else {
+			System.out.print(" I'd owe you a big favor if you could find me one.");
+		}
 	}
 
 	public Room getRoom() {

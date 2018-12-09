@@ -162,6 +162,10 @@ public class Room {
 		return door;
 	}
 
+	public boolean checkAllDirections(){
+		return checkDirection("north") || checkDirection("east") || checkDirection("south") || checkDirection("west");
+	}
+
 	public boolean checkDirection(String direction) {
 		return checkDirectionRoom(direction) && checkDirectionDoor(direction);
 	}
@@ -194,7 +198,7 @@ public class Room {
 
 		if (this.checkDirectionRoom(direction) && !this.checkDirectionDoor(direction)) {
 			this.doors.get(door).open();
-		} 
+		}
 	}
 
 	@Override
