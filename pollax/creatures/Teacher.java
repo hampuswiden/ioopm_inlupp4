@@ -15,9 +15,9 @@ import pollax.items.Book;
 public class Teacher extends Creature {
 	private String name;
 	private Course course;
-	private String question;
-	private List<String> choices = new ArrayList<String>();
-	private String correctAnswer; 
+	//private String question;
+	//private List<String> choices = new ArrayList<String>();
+	//private String correctAnswer;
 
 	public Teacher() {
 
@@ -27,11 +27,7 @@ public class Teacher extends Creature {
 		this.name = args[0];
 		T course = dbCourses.get(args[1].toLowerCase());
 		this.course = (Course) course;
-		this.question = args[2];
-		this.choices.add(args[3]);
-		this.choices.add(args[4]);
-		this.choices.add(args[5]);
-		this.correctAnswer = args[6];
+		this.course.addQuiz(args[2], args[3], args[4], args[5], args[6]);
 	}
 
 	public String toString() {
@@ -55,11 +51,12 @@ public class Teacher extends Creature {
 	}
 
 	public boolean quiz() {
-		System.out.println("\n" + this.name + ": " + question);
+		System.out.println("\n" + this.name + ": " + this.course.getQuestion());
 		String choicesStr = "";
-		for (int i = 0; i < this.choices.size(); i++) {
-			choicesStr += i+1 + ": " + this.choices.get(i);
-			if (i != this.choices.size()-1) {
+		List<String> quizChoices = this.course.getChoices();
+		for (int i = 0; i < quizChoices.size(); i++) {
+			choicesStr += i+1 + ": " + quizChoices.get(i);
+			if (i != quizChoices.size()-1) {
 				choicesStr += ", ";
 			}
 		}
@@ -67,10 +64,10 @@ public class Teacher extends Creature {
 		System.out.print("Choice: ");
 		String choice = System.console().readLine();
 		if (choice.equals("1") || choice.equals("2") || choice.equals("3")) {
-			String answer = this.choices.get(Integer.parseInt(choice)-1);
-			return answer.equals(this.correctAnswer);
+			String answer = quizChoices.get(Integer.parseInt(choice)-1);
+			return answer.equals(this.course.getCorrectAnswer());
 		} else {
-			// throw new Bad Input 
+			// throw new Bad Input
 		}
 		return false; // Can be removed when throw new Error is implemented?
 	}

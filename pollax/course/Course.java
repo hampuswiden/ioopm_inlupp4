@@ -1,5 +1,7 @@
 package pollax.course;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import pollax.items.Book;
@@ -12,6 +14,9 @@ public class Course {
 	private String courseName;
 	private Book book;
 	private int hp;
+	private String question; // NEW EDIT
+	private List<String> choices = new ArrayList<String>(); // NEW EDIT
+	private String correctAnswer; // NEW EDIT
 
 	public Course() {
 
@@ -24,11 +29,31 @@ public class Course {
 		this.hp = Integer.parseInt(args[2]);
 	}
 
+	public void addQuiz(String... args){
+		this.question = args[0];
+		this.choices.add(args[1]);
+		this.choices.add(args[2]);
+		this.choices.add(args[3]);
+		this.correctAnswer = args[4];
+	}
+
+	public String getQuestion(){
+		return this.question;
+	}
+
+	public String getCorrectAnswer() {
+		return this.correctAnswer;
+	}
+
+	public List<String> getChoices(){
+		return this.choices;
+	}
+
 	public String toString() {
 		return this.courseName;
 	}
 
-	public Book getCouseBook(){
+	public Book getCourseBook(){
 		return this.book;
 	}
 

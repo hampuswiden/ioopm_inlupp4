@@ -49,7 +49,7 @@ public class Student extends Creature {
 
 //Hämta namnet på boken?
 	public void talk(Avatar avatar) {
-		Book wantedBook = this.unfinishedCourses.get(0).getCouseBook();
+		Book wantedBook = this.unfinishedCourses.get(0).getCourseBook();
 		List<Item> avatarItems = avatar.getItems();
 
 		if(this.items.contains(wantedBook)){
@@ -77,7 +77,7 @@ public class Student extends Creature {
 	}
 
 	public void trade(Avatar avatar) {
-		Book wantedBook = this.unfinishedCourses.get(0).getCouseBook();
+		Book wantedBook = this.unfinishedCourses.get(0).getCourseBook();
 		Book studentBook = this.finishedCourses.get(0).getCourseBook();
 		List<Item> avatarItems = avatar.getItems();
 
@@ -89,7 +89,7 @@ public class Student extends Creature {
 				avatar.addItem(studentBook);
 				this.removeItem(studentBook);
 
-				System.out.printl("Wow! Thanks, here you have " + studentBook);
+				System.out.println("Wow! Thanks, here you have " + studentBook);
 			} else {
 				System.out.println("Wow! Thanks, here are some notes I took from the exam!");
 				// FIX COURSE
