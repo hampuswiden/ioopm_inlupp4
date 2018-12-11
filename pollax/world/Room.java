@@ -143,8 +143,31 @@ public class Room {
         		return (Teacher) creature;
         	}
 		}
-		return new Teacher();
+		return new Teacher(); // throw new ....
 	}
+
+	public boolean hasSfinx() {
+		Creature creature;
+		for (int i = 0; i < this.creatures.size(); i++) {
+        	creature = this.creatures.get(i);
+        	if (creature.isSfinx()) {
+        		return true;
+        	}
+		}
+		return false;
+	}
+
+	public Sfinx getSfinx() {
+		Creature creature;
+		for (int i = 0; i < this.creatures.size(); i++) {
+        	creature = this.creatures.get(i);
+        	if (creature.isSfinx()) {
+        		return (Sfinx) creature;
+        	}
+		}
+		return new Sfinx(); // throw new ....
+	}
+	
 
 	public int getDirection(String direction) throws InvalidInputException {
 		int door = -1;

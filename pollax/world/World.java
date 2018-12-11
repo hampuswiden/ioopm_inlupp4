@@ -87,6 +87,12 @@ public class World {
 				}
 		}
 
+		// Generate Sfinxen in a random room
+		Sfinx sfinxen = new Sfinx();
+		Room sfinxRoom = this.wu.randomRoom(dbRooms);
+		sfinxRoom.addCreature(sfinxen);
+		dbCreatures.put("sfinxen", sfinxen);
+
 		// Generate keys in random rooms
 		int noLockedDoors = this.wu.noLockedDoors(dbRooms);
 		int noKeys = (int) Math.round(noLockedDoors * 1.5);

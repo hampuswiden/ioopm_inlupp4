@@ -31,6 +31,9 @@ public class Avatar extends Student {
 		return super.getRoom();
 	}
 
+	public int getHp() {
+		return this.hp;
+	}
 	public void go(String direction, World world) {
 		Room room = super.getRoom();
 		super.go(direction, world);
@@ -267,5 +270,20 @@ public class Avatar extends Student {
 			this.hp -= course.getHp();
 			System.out.println(teacherName + ": Sorry... Your earned hp for the course (" + course.getHp() + ") has been withdrawn.\nYou'll have to retake the course.");
 		}
+	}
+
+	public boolean graduate(World world) {
+		Room room = super.getRoom();
+		if (!room.hasSfinx()) {
+			System.out.println("You need to talk to 'Sfinxen' in order to graduate.");
+			return false;
+		}
+
+		Sfinx sfinxen = room.getSfinx();
+		boolean graduated = sfinxen.graduate(this);
+		System.out.println("Graduated: " + graduated);
+
+
+		return graduated;
 	}
 }

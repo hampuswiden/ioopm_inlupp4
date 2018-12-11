@@ -21,5 +21,9 @@ public abstract class Creature {
 		return false;
 	}
 
+	public boolean isSfinx() {
+		return false;
+	}
+
 	public abstract void talk();
 }

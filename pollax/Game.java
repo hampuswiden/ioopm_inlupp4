@@ -36,7 +36,7 @@ public class Game {
 
 
 		        if (command.equals("go")) {
-							world.moveStudents();
+					world.moveStudents();
 		        	avatar.go(argument, world);
 		        } else if (command.equals("use key with")) {
 		        	avatar.openDoor(argument);
@@ -52,6 +52,8 @@ public class Game {
 		        	avatar.enroll(argument, world);
 		        } else if (command.equals("courseinfo")) {
 		        	avatar.courseInfo();
+		        } else if (command.equals("graduate")) {
+		        	avatar.graduate(world);
 		        }
 
 				} catch(InvalidInputException e) {
