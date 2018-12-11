@@ -10,7 +10,6 @@ import pollax.interactive.*;
 import pollax.items.*;
 import pollax.utils.*;
 import pollax.world.*;
-import java.lang.reflect.Array;
 
 public class Game {
 

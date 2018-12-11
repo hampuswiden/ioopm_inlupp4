@@ -76,6 +76,29 @@ public class Student extends Creature {
 		}
 	}
 
+	public void trade(Avatar avatar) {
+		Book wantedBook = this.unfinishedCourses.get(0).getCouseBook();
+		Book studentBook = this.finishedCourses.get(0).getCourseBook();
+		List<Item> avatarItems = avatar.getItems();
+
+		if(avatarItems.contains(wantedBook)){
+			avatar.removeItem(wantedBook);
+			this.addItem(wantedBook);
+
+			if(this.items.size()==2){
+				avatar.addItem(studentBook);
+				this.removeItem(studentBook);
+
+				System.out.printl("Wow! Thanks, here you have " + studentBook);
+			} else {
+				System.out.println("Wow! Thanks, here are some notes I took from the exam!");
+				// FIX COURSE
+			}
+		}
+
+
+	}
+
 	public Room getRoom() {
 		return this.room;
 	}
