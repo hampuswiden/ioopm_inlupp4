@@ -126,7 +126,7 @@ public class World {
 	}
 
 	public void moveStudents() {
-		int studentGoChance = 50;
+		int studentGoChance = 10;
 		int direction;
 		String directions[] = {"north", "east", "south", "west"};
 		boolean moved;

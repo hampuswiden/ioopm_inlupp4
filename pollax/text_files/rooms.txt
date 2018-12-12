@@ -1,5 +1,32 @@
-Room 1357; Hallway 4; X; X; X; False; False; False; False
-Room 1360; X; Hallway 4; X; X; False; False; False; False
-Room 1365; X; X; Hallway 4; X; False; False; False; False
-Room 1370; X; X; X; Hallway 4; False; False; False; False
-Hallway 4; Room 1365; Room 1370; Room 1357; Room 1360; True; False; False; False
+Hallway 1300 (1); Room 1301; Hallway 1300 (2); Room 1302; Hallway 1200 (1); True; False; False; False
+Hallway 1300 (2); Room 1303; Hallway 1300 (3); Room 1304; Hallway 1300 (1); False; False; False; False
+Hallway 1300 (3); Room 1305; Hallway 1300 (4); Room 1306; Hallway 1300 (2); False; False; False; False
+Hallway 1300 (4); Room 1307; Common Group Room 1300; Room 1308; Hallway 1300 (3); False; False; False; False
+Common Group Room 1300; Group Room 1301; Group Room 1302; Group Room 1303; Hallway 1300 (4); True; True; True; False
+Group Room 1301; X; X; Common Group Room 1300; X; False; False; False; False
+Group Room 1302; X; X; X; Common Group Room 1300; False; False; False; False
+Group Room 1303; Common Group Room 1300; X; X; X; False; False; False; False
+Room 1301; X; Room 1303; Hallway 1300 (1); X; False; False; False; False
+Room 1302; Hallway 1300 (1); X; X; X; False; False; False; False
+Room 1303; X; X; Hallway 1300 (2); Room 1301; False; False; False; True
+Room 1304; Hallway 1300 (2); X; X; X; False; False; False; False
+Room 1305; X; X; Hallway 1300 (3); X; False; False; False; False
+Room 1306; Hallway 1300 (3); X; X; X; False; False; False; False
+Room 1307; X; X; Hallway 1300 (4); X; False; False; False; False
+Room 1308; Hallway 1300 (4); X; X; X; False; False; False; False
+Hallway 1200 (1); Room 1201; Hallway 1200 (2); Room 1202; Hallway 1300 (1); False; False; False; False
+Hallway 1200 (2); Room 1203; Hallway 1200 (3); Room 1204; Hallway 1200 (1); False; False; False; False
+Hallway 1200 (3); Room 1205; Hallway 1200 (4); Room 1206; Hallway 1200 (2); False; False; False; False
+Hallway 1200 (4); Room 1207; Common Group Room 1200; Room 1208; Hallway 1200 (3); False; False; False; False
+Common Group Room 1200; Group Room 1201; Group Room 1202; Group Room 1203; Hallway 1200 (4); True; True; True; False
+Group Room 1201; X; X; Common Group Room 1200; X; False; False; False; False
+Group Room 1202; X; X; X; Common Group Room 1200; False; False; False; False
+Group Room 1203; Common Group Room 1200; X; X; X; False; False; False; False
+Room 1201; X; X; Hallway 1200 (1); X; False; False; False; False
+Room 1202; Hallway 1200 (1); X; X; X; False; False; False; False
+Room 1203; X; X; Hallway 1200 (2); X; False; False; False; False
+Room 1204; Hallway 1200 (2); X; X; X; False; False; False; False
+Room 1205; X; X; Hallway 1200 (3); X; False; False; False; False
+Room 1206; Hallway 1200 (3); X; X; X; False; False; False; False
+Room 1207; X; X; Hallway 1200 (4); X; False; False; False; False
+Room 1208; Hallway 1200 (4); X; X; X; False; False; False; False
