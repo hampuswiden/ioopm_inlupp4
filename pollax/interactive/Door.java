@@ -6,8 +6,15 @@ package pollax.interactive;
  * @since       1.0
  */
 public class Door extends InteractiveObject {
+	/**
+	* boolean if door is open. true if open.
+	*/
 	private boolean open;
 
+	/**
+	* sets opem to true (open) or false (locked).
+	* @param s String that holds "True" or "False".
+	*/
 	public Door(String s) {
 		if (s.equals("True")) {
 			this.open = false;
@@ -16,10 +23,17 @@ public class Door extends InteractiveObject {
 		}
 	}
 
+	/**
+	* checks if door is open, instance variable.
+	* @return true if open.
+	*/
 	public boolean isOpen() {
 		return this.open;
 	}
 
+	/**
+	* opens door (sets open to true).
+	*/
 	public void open() {
 		this.open = true;
 	}

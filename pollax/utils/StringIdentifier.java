@@ -2,8 +2,16 @@ package pollax.utils;
 
 import java.util.Arrays;
 
+
 public class StringIdentifier {
+	/**
+	* string held by StringIdentifier
+	*/
 	private String string;
+
+	/**
+	* commands with arguments.
+	*/
 	private String[] commands = new String[]{
 		"go",
 		"talk",
@@ -14,7 +22,9 @@ public class StringIdentifier {
 		"use key with",
 		"read"};
 
-
+		/**
+		* commands without arguments.
+		*/
 	private String[] noArgument = new String[]{
 		"inventory",
 		"graduate",
@@ -22,10 +32,18 @@ public class StringIdentifier {
 	};
 
 
-
+	/**
+	* constructor for StringIdentifier
+	*/
 	public StringIdentifier() {
 	}
-	/////// FIX ME, CHECK COMPLETE WORDS
+
+	/**
+	* finds corresponding command from commands or noArgument.
+	* @param string string to be checked for command and argument.
+	* @return StringArray with parsed string.
+	* @throws InvalidInputException
+	*/
 	public String[] findCommand(String string) {
 		String command;
 		for (int i = 1; i <= string.length(); i++) {
