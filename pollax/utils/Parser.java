@@ -19,13 +19,23 @@ import pollax.creatures.*;
 public class Parser {
 	private String path;
 
+	/**
+	* empty constructor for Parser.
+	*/
 	public Parser() {
 	}
 
+	/**
+	* assigns input path to instance variable.
+	* @param path path for file.
+	*/
 	public void parse(String path) {
 		this.path = path;
 	}
 
+	/**
+	* generates a database of String mapped to given Type <T>.
+	*/
 	@SuppressWarnings("unchecked")
 	public <T,S> void generateDB(T instance, HashMap<String, T> db, HashMap<String, S> dbHelp) {
 		try {

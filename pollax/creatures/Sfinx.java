@@ -5,8 +5,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Sfinx extends Creature {
+	/**
+	* name for the Sfinx.
+	*/
 	private String name = "Sfinxen";
+
+	/**
+	* List of wisdoms that the sfinx holds.
+	*/
 	private static List<String> wisdoms = new ArrayList<String>();
+
+	/**
+	* random().
+	*/
 	private Random rand = new Random();
 
 	static {
@@ -15,20 +26,35 @@ public class Sfinx extends Creature {
 		Sfinx.wisdoms.add("Off by one errors are the hardest to remember, but the easiest to fix.");
 		Sfinx.wisdoms.add("Hash tables are your best friends, use them.");
 	}
+
+	/**
+	* empty constructor for Sfinx.
+	*/
 	public Sfinx() {
 
 	}
 
+	/**
+	* to string funciton for Sfinx.
+	* @return name of Sfinx.
+	*/
 	@Override
 	public String toString() {
 		return this.name;
 	}
 
+	/**
+	* checks if creature is of type Sfinx.
+	* @return true.
+	*/
 	@Override
 	public boolean isSfinx() {
 		return true;
 	}
 
+	/**
+	* Makes the sfinx talk.
+	*/
 	@Override
 	public void talk() {
 		int n = this.rand.nextInt(this.wisdoms.size());
@@ -36,6 +62,11 @@ public class Sfinx extends Creature {
 		System.out.println(this.name + ": " + randomWisdom);
 	}
 
+	/**
+	* Attempts to graduate the avatar, if enough hp has been gathered.
+	* @param avatar avatar that tries to graduate.
+	* @return true if student meets requirements of graduating.
+	*/
 	public boolean graduate(Avatar avatar) {
 		if (avatar.getHp() >= 180 && avatar.getUnfinishedCourses().size() == 0) {
 			System.out.println(this.name + ": " + "Congratulationz! You have now graduated from UU with a 3 year degree!");

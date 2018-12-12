@@ -20,12 +20,35 @@ import java.lang.reflect.Array;
  * @since       1.0
  */
 public class World {
+	/**
+	* instance of world utils, used for util functions.
+	*/
 	private WorldUtils wu = new WorldUtils();
+
+	/**
+	* HashMap for rooms
+	*/
 	private HashMap<String, Room> dbRooms;
+
+	/**
+	* HashMap for courses
+	*/
 	private HashMap<String, Course> dbCourses;
+
+	/**
+	* HashMap for items
+	*/
 	private HashMap<String, Item> dbItems;
+
+	/**
+	* HashMap for creatures
+	*/
 	private HashMap<String, Creature> dbCreatures;
 
+	/**
+	* constructor for World
+	* Info: generates all databases and creates the layout for world and the objects it holds
+	*/
 	public World() {
 		HashMap<String, Room> dbRooms = new HashMap<String, Room>();
 		HashMap<String, Item> dbItems = new HashMap<String, Item>();
@@ -125,6 +148,9 @@ public class World {
 		}
 	}
 
+	/**
+	* chance to move any Student in the Student database to a random neighbouring room.
+	*/
 	public void moveStudents() {
 		int studentGoChance = 10;
 		int direction;
@@ -152,26 +178,51 @@ public class World {
 		}
 	}
 
+	/**
+	* gets HashMap for rooms and their names, instance variable.
+	* @return HashMap for rooms.
+	*/
 	public HashMap<String, Room> dbRooms() {
 		return this.dbRooms;
 	}
 
+	/**
+	* gets HashMap for items and their names, instance variable.
+	* @return HashMap for items.
+	*/
 	public HashMap<String, Item> dbItems() {
 		return this.dbItems;
 	}
 
+	/**
+	* gets HashMap for courses and their names, instance variable.
+	* @return HashMap for courses.
+	*/
 	public HashMap<String, Course> dbCourses() {
 		return this.dbCourses;
 	}
 
+	/**
+	* gets HashMap for creatures and their names, instance variable.
+	* @return HashMap for creatures.
+	*/
 	public HashMap<String, Creature> dbCreatures() {
 		return this.dbCreatures;
 	}
 
+	/**
+	* gets a random room from the room database.
+	* @return randomly picked room.
+	*/
 	public Room randomRoom() {
 		return this.wu.randomRoom(this.dbRooms);
 	}
 
+	/**
+	* generates a boolean stating success or not, based on the a roll 0-100 and the input int.
+	* @param chance a chance between 0-100 for success.
+	* @return true if the input chance is higher than the random roll.
+	*/
 	public boolean random(int chance) {
 		return this.wu.random(chance);
 	}

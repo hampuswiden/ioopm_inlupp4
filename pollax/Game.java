@@ -13,6 +13,10 @@ import pollax.world.*;
 
 public class Game {
 
+	/**
+	* the main loop of the game.
+	* Info: consists of mainly generating world with help of Wold class, and the even loop for commands.
+	*/
 	public static void main(String[] args) {
 		World world = new World();
 
