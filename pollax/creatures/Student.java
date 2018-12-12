@@ -77,8 +77,10 @@ public class Student extends Creature {
 	}
 
 	public void trade(Avatar avatar) {
-		Book wantedBook = this.unfinishedCourses.get(0).getCourseBook();
-		Book studentBook = this.finishedCourses.get(0).getCourseBook();
+		Course finishedCourse = this.finishedCourses.get(0);
+		Course unfinishedCourse = this.unfinishedCourses.get(0);
+		Book studentBook = finishedCourse.getCourseBook();
+		Book wantedBook = unfinishedCourse.getCourseBook();
 		List<Item> avatarItems = avatar.getItems();
 
 		if(avatarItems.contains(wantedBook)){
@@ -88,16 +90,23 @@ public class Student extends Creature {
 			if(this.items.size()==2){
 				avatar.addItem(studentBook);
 				this.removeItem(studentBook);
-
 				System.out.println("Wow! Thanks, here you have " + studentBook);
+				return;
+
 			} else {
-				System.out.println("Wow! Thanks, here are some notes I took from the exam!");
-				// FIX COURSE
+				System.out.println("Wow! Thanks, so about those notes. ");
+				List<String> choices = finishedCourse.getChoices();
+				for(String choice : choices){
+					if(!choice.equals(finishedCourse.getCorrectAnswer())){
+							finishedCourse.removeChoice(choice);
+							System.out.print( "The right answer to the quiz in " + finishedCourse + " is... Not " + choice + "!!");
+							return;
+					}
+				}
 			}
 		}
-
-
 	}
+
 
 	public Room getRoom() {
 		return this.room;

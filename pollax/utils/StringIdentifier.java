@@ -11,11 +11,12 @@ public class StringIdentifier {
 		"enroll",
 		"trade",
 		"pick up",
-		"use key with"};
+		"use key with",
+		"read"};
 
 
 	private String[] noArgument = new String[]{
-		"inventory", 
+		"inventory",
 		"graduate",
 		"courseinfo"
 	};
@@ -46,7 +47,7 @@ public class StringIdentifier {
 						return new String[]{command, ""};
 					}
 				}
-				
+
 			}
 		}
 		throw new InvalidInputException("\'" + string + "\'" + " is not a valid command");

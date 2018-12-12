@@ -49,6 +49,12 @@ public class Course {
 		return this.choices;
 	}
 
+	public void removeChoice(String choice){
+		if (this.choices.contains(choice)) {
+			this.choices.remove(choice);
+		}
+	}
+
 	public String toString() {
 		return this.courseName;
 	}

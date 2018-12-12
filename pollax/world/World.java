@@ -50,11 +50,23 @@ public class World {
 		Book instanceOfBook = new Book();
 		p.generateDB(instanceOfBook, dbItems, dbItems);
 
+		for (Item book : dbItems.values()) {
+    		Room room = this.wu.randomRoom(dbRooms);
+    		room.addItem((Book) book);
+		}
+
+
 		// Generate Courses
 		String pathCourses = "./pollax/text_files/courses.txt";
 		p.parse(pathCourses);
 		Course instanceOfCourse = new Course();
 		p.generateDB(instanceOfCourse, dbCourses, dbItems);
+
+		// Assign the corresponding course to all books
+		for (Course course : dbCourses.values()) {
+    		Book courseBook = course.getCourseBook();
+				courseBook.assignCourse(course);
+		}
 
 		// Generate Teachers
 		String pathTeachers = "./pollax/text_files/teachers.txt";
@@ -79,11 +91,18 @@ public class World {
 
 		// Loop through Students and put them into random rooms
 		for (Creature cStudent : dbCreatures.values()) {
-    		Room room = this.wu.randomRoom(dbRooms);
+
 				if(cStudent instanceof Student){
+					Room room = this.wu.randomRoom(dbRooms);
 					Student student = (Student) cStudent;
 					student.assignRoom(room);
     			room.addCreature((Student) student);
+
+					boolean hasBook = this.wu.random(50);
+					List <Course> studentCourse = student.getFinishedCourses();
+					if(hasBook && studentCourse.size() == 1){
+						student.addItem(studentCourse.get(0).getCourseBook());
+					}
 				}
 		}
 

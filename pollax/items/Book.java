@@ -1,5 +1,7 @@
 package pollax.items;
 
+import pollax.course.Course;
+
 /**
  * @author      Jonathan Franzén, Hampus Widén
  * @version     1.0
@@ -9,6 +11,7 @@ public class Book extends Item {
 	private String title;
 	private String author;
 	private String year;
+	private Course course;
 
 	public Book() {
 
@@ -23,9 +26,17 @@ public class Book extends Item {
 
 	@Override
 	public String toString() {
-		return "Title: " + this.title +
-		", Author: " + this.author + 
+		return "Title: " + this.title; /*+
+		", Author: " + this.author +
 		", Year: " + this.year +
-		", Capacity: " + super.getCapacity();
+		", Capacity: " + super.getCapacity();*/
+	}
+
+	public Course getCourse(){
+		return this.course;
+	}
+
+	public void assignCourse(Course course){
+		this.course = course;
 	}
 }

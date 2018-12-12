@@ -197,6 +197,40 @@ public class Avatar extends Student {
 		}
 	}
 
+	public void trade(String creatureName, World world) {
+		Creature creature = world.dbCreatures().get(creatureName);
+		Room room = super.getRoom();
+		List<Creature> roomCreatures = room.getCreatures();
+		if (roomCreatures.contains(creature)) {
+			if (creature.isStudent()){
+				Student student = (Student) creature;
+				student.trade(this);
+			} else if (creature.isTeacher()) {
+				System.out.println("I don't think teachers takes kindly to bribes...");
+			}
+
+		} else {
+			System.out.println("No person called '" + creatureName + "' in the room.");
+		}
+	}
+
+	public void read(String bookName, World world) {
+		Item item = world.dbItems().get(bookName);
+		List<Item> items = super.getItems();
+
+		if (items.contains(item) && item instanceof Book) {
+			Book book = (Book) item;
+			String correctChoice = book.getCourse().getCorrectAnswer();
+			System.out.println(
+			"After some actual studying i figured out that the answer to the Quiz is \'" +
+			correctChoice +
+			"\'. Hmm... reading wasn't as bad as i expected."
+			);
+		} else {
+			System.out.println("No book called " + bookName + " in inventory.");
+		}
+	}
+
 	public void enroll(String courseName, World world) {
 		Course course = world.dbCourses().get(courseName);
 		if (course == null) {
