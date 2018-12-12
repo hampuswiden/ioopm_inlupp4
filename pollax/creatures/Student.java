@@ -58,18 +58,18 @@ public class Student extends Creature {
 		}
 
 		System.out.println(
-		this.name +
-		": Hi! I'm currently studying " +
+		this.toString() +
+		": Hi! I'm currently studying \'" +
 		this.unfinishedCourses.get(0) +
-		"... However, I lost my book.");
+		"\'. However, I lost my course book, \'" + wantedBook + "\'.");
 		if (avatar.getItems().contains(wantedBook)){
-			System.out.print(".. Wait, is that " +
+			System.out.print(".. Wait, is that a copy of \'" +
 			wantedBook +
-			" sticking out of your bag? If you trade it to me, I'd be willing to give you ");
+			"\' sticking out of your bag? If you trade it to me, I'd be willing to give you ");
 			if(this.items.size()==1){
-				System.out.print(this.items.get(0));
+				System.out.print("\'" + this.items.get(0) + "\', the course book for \'" + this.finishedCourses.get(0) + "\'.");
 			} else {
-				System.out.print("some tips for the quiz in " + this.finishedCourses.get(0));
+				System.out.print("some tips for the quiz in \'" + this.finishedCourses.get(0) + "\'.");
 			}
 		} else {
 			System.out.print(" I'd owe you a big favor if you could find me one.");
@@ -90,7 +90,7 @@ public class Student extends Creature {
 			if(this.items.size()==2){
 				avatar.addItem(studentBook);
 				this.removeItem(studentBook);
-				System.out.println("Wow! Thanks, here you have " + studentBook);
+				System.out.println("Wow! Thanks, here you have \'" + studentBook + "\', that should help you with \'" + finishedCourse + "\'.");
 				return;
 
 			} else {
@@ -99,7 +99,7 @@ public class Student extends Creature {
 				for(String choice : choices){
 					if(!choice.equals(finishedCourse.getCorrectAnswer())){
 							finishedCourse.removeChoice(choice);
-							System.out.print( "The right answer to the quiz in " + finishedCourse + " is... Not " + choice + "!!");
+							System.out.print( "The right answer to the quiz in \'" + finishedCourse + "\' is... Not \'" + choice + "\'!!");
 							return;
 					}
 				}

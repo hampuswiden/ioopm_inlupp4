@@ -12,6 +12,7 @@ public class Book extends Item {
 	private String author;
 	private String year;
 	private Course course;
+	private String bookText;
 
 	public Book() {
 
@@ -22,11 +23,12 @@ public class Book extends Item {
 		this.author = args[1];
 		this.year = args[2];
 		super.setCapacity(Integer.parseInt(args[3]));
+		this.bookText = args[4];
 	}
 
 	@Override
 	public String toString() {
-		return "Title: " + this.title; /*+
+		return /*"Title: " + */this.title; /*+
 		", Author: " + this.author +
 		", Year: " + this.year +
 		", Capacity: " + super.getCapacity();*/
@@ -34,6 +36,10 @@ public class Book extends Item {
 
 	public Course getCourse(){
 		return this.course;
+	}
+
+	public String getBookText(){
+		return this.bookText;
 	}
 
 	public void assignCourse(Course course){

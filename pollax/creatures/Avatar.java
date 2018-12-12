@@ -220,12 +220,7 @@ public class Avatar extends Student {
 
 		if (items.contains(item) && item instanceof Book) {
 			Book book = (Book) item;
-			String correctChoice = book.getCourse().getCorrectAnswer();
-			System.out.println(
-			"After some actual studying i figured out that the answer to the Quiz is \'" +
-			correctChoice +
-			"\'. Hmm... reading wasn't as bad as i expected."
-			);
+			System.out.println(book.getBookText());
 		} else {
 			System.out.println("No book called " + bookName + " in inventory.");
 		}
