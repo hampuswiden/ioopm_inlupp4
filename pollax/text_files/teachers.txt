@@ -2,3 +2,6 @@ Per Andersson; Folklivsforskning 101; Vart ifrån kommer Zlatan?; Bosnien; Kroat
 Professor Oak; Pokémonjakt 1; Which is the best starter Pokémon?; Charmander; Squirtle; Bulbasaur; Squirtle
 Karl Stenmark; Flerkonstantanalys 2; Vad är lim x->0+ 1/x?; Odef.; Infinity; -Infinity; Infinity
 Liv "Skolan" Hård; Motivation till att plugga 3; Vad gör man istället för att plugga?; Städar; Gymmar; Sover; Sover
+Lars-Åke; Allt om IT 1; Vad står förkortningen IT för?; Irregulära Träd; InformationsTeknologi; Inga Tjejer; InformationsTeknologi
+Jonathan Watford; DBMS 4; Which year was the first version of SQL accepted by the ISO?; 1985; 1986; 1987; 1987
+Jones Niles; Bitanalysis 2; What came first, the one or the nil?; The one; The nil; Neither; 1

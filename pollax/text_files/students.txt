@@ -2,3 +2,6 @@ Snusmumriken; Folklivsforskning 101; Pokémonjakt 1
 Ash Ketchup; Pokémonjakt 1; Motivation till att plugga 3
 The guy that likes math; Flerkonstantanalys 2; Folklivsforskning 101
 Alfons 'Jag ska bara' Åberg; Motivation till att plugga 3; Flerkonstantanalys 2
+Benke; Allt om IT 1; DBMS 4
+Piotr; DBMS 4; Bitanalysis 2
+Hacker1337; Bitanalysis 2; Allt om IT 1

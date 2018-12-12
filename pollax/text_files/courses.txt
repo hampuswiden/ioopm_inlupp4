@@ -2,3 +2,6 @@ Folklivsforskning 101; Kaffekokning i pumpa av ohärdat glas; 10
 Pokémonjakt 1; How to "Catch 'Em All"; 20
 Flerkonstantanalys 2; Variabla konstanter; 15
 Motivation till att plugga 3; Bara att bita i; 30
+Allt om IT 1; Everything about IT and more; 30
+DBMS 4; SQL is life; 20
+Bitanalysis 2; It's either a 0 or a 1; 30
