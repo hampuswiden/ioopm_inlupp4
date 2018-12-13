@@ -25,7 +25,7 @@ public class Game {
 
 		StringIdentifier si = new StringIdentifier();
 
-    System.out.println("Welcome to the PollaxMUD!");
+    	System.out.println("Welcome to the PollaxMUD!");
 		System.out.println(startRoom);
 		boolean loop = true;
 
@@ -40,7 +40,7 @@ public class Game {
 
 
 		        if (command.equals("go")) {
-							world.moveStudents();
+					world.moveStudents();
 		        	avatar.go(argument, world);
 		        } else if (command.equals("use key with")) {
 		        	avatar.openDoor(argument);
@@ -57,12 +57,14 @@ public class Game {
 		        } else if (command.equals("courseinfo")) {
 		        	avatar.courseInfo();
 		        } else if (command.equals("graduate")) {
-		        	avatar.graduate(world);
+		        	loop = !avatar.graduate(world);
 		        } else if (command.equals("trade")) {
-							avatar.trade(argument, world);
-						} else if (command.equals("read")) {
-							avatar.read(argument, world);
-						}
+					avatar.trade(argument, world);
+				} else if (command.equals("read")) {
+					avatar.read(argument, world);
+				} else if (command.equals("room")) {
+					System.out.println(avatar.getRoom());	
+				}
 
 				} catch(InvalidInputException e) {
 					System.out.print("Invalid Input Error: ");

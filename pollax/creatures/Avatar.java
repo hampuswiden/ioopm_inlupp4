@@ -399,12 +399,9 @@ public class Avatar extends Student {
 			System.out.println("You need to talk to 'Sfinxen' in order to graduate.");
 			return false;
 		}
-
 		Sfinx sfinxen = room.getSfinx();
 		boolean graduated = sfinxen.graduate(this);
-		System.out.println("Graduated: " + graduated);
-
-
+		
 		return graduated;
 	}
 }
