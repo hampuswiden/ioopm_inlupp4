@@ -138,7 +138,7 @@ public class Student extends Creature {
 			avatar.removeItem(wantedBook);
 			this.addItem(wantedBook);
 
-			if(this.items.size()==2){
+			if(this.items.contains(studentBook)){
 				avatar.addItem(studentBook);
 				this.removeItem(studentBook);
 				System.out.println("Wow! Thanks, here you have \'" + studentBook + "\', that should help you with \'" + finishedCourse + "\'.");

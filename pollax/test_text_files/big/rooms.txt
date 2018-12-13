@@ -1,0 +1,3 @@
+Room Start; Room Open; X; Room Locked; X; False; False; True; False
+Room Open; X; X; Room Start; X; False; False; False; False
+Room Locked; Room Start; X; X; X; False; False; False; False

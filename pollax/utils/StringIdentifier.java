@@ -29,7 +29,8 @@ public class StringIdentifier {
 		"inventory",
 		"graduate",
 		"courseinfo",
-		"room"
+		"room",
+		"quit"
 	};
 
 

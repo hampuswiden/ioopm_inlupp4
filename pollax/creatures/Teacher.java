@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import pollax.utils.InvalidInputException;
 import pollax.course.Course;
 import pollax.items.Book;
 
@@ -88,7 +89,7 @@ public class Teacher extends Creature {
 	* Makes a quiz that user has to answer. If answered correct, finish course and get hp, otherwise unifish course and lose hp or nothing.
 	* @return true if quiz answered correctly.
 	*/
-	public boolean quiz() {
+	public boolean quiz() throws InvalidInputException{
 		System.out.println("\n" + this.name + ": " + this.course.getQuestion());
 		String choicesStr = "";
 		List<String> quizChoices = this.course.getChoices();
@@ -105,9 +106,8 @@ public class Teacher extends Creature {
 			String answer = quizChoices.get(Integer.parseInt(choice)-1);
 			return answer.equals(this.course.getCorrectAnswer());
 		} else {
-			// throw new Bad Input
+			throw new InvalidInputException("Bad choice");
 		}
-		return false; // Can be removed when throw new Error is implemented?
 	}
 
 	/**

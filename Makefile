@@ -1,3 +1,5 @@
+TEST_LIBS = lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar
+
 build: build_course build_creature build_interactive build_item build_utils build_world
 	javac -d classes pollax/Game.java
 run:
@@ -16,9 +18,7 @@ build_world:
 	javac -d classes pollax/world/*.java
 clean:
 	rm -rf classes
-
-test: build_course build_creature build_interactive build_item build_utils build_world
-	javac -d classes pollax/Test.java
-
-run_test:
-	java -classpath classes pollax.Test
+build_test: build_course build_creature build_interactive build_item build_utils build_world
+	javac -d classes pollax/GameTest.java
+test: build build_test
+	java -classpath classes:$(TEST_LIBS) org.junit.runner.JUnitCore GameTest

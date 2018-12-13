@@ -34,7 +34,10 @@ public class Parser {
 	}
 
 	/**
-	* generates a database of String mapped to given Type <T>.
+	* generates a database of Strings mapped to given Type <T>.
+	* @param instance an instance of type T.
+	* @param db the new empty db to be generated.
+	* @param dbHelp a databases which is used to generate the new db.
 	*/
 	@SuppressWarnings("unchecked")
 	public <T,S> void generateDB(T instance, HashMap<String, T> db, HashMap<String, S> dbHelp) {

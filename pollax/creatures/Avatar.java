@@ -60,6 +60,14 @@ public class Avatar extends Student {
 	}
 
 	/**
+	* sets student total hp, instance variable.
+	* @param hp new hp.
+	*/
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	/**
 	* moves avatar to different room if possible.
 	* @param direction the direction which avatar tries to move.
 	* @param world the current world.

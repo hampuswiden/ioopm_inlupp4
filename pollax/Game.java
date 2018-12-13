@@ -64,6 +64,8 @@ public class Game {
 					avatar.read(argument, world);
 				} else if (command.equals("room")) {
 					System.out.println(avatar.getRoom());	
+				} else if (command.equals("quit")) {
+					loop = false;
 				}
 
 				} catch(InvalidInputException e) {
