@@ -16,3 +16,9 @@ build_world:
 	javac -d classes pollax/world/*.java
 clean:
 	rm -rf classes
+
+test: build_course build_creature build_interactive build_item build_utils build_world
+	javac -d classes pollax/Test.java
+
+run_test:
+	java -classpath classes pollax.Test

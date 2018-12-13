@@ -18,14 +18,14 @@ public class Game {
 	* Info: consists of mainly generating world with help of Wold class, and the even loop for commands.
 	*/
 	public static void main(String[] args) {
-		World world = new World();
+		World world = new World("./pollax/text_files/");
 
 		Room startRoom = world.randomRoom();
 		Avatar avatar = new Avatar("Ninja", startRoom);
 
 		StringIdentifier si = new StringIdentifier();
 
-    System.out.println("Welcome to the PollaxMUD!");
+    	System.out.println("Welcome to the PollaxMUD!");
 		System.out.println(startRoom);
 		boolean loop = true;
 

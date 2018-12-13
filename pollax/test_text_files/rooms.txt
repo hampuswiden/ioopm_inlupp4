@@ -1,0 +1,2 @@
+Start room; Grad room; X; X; X; True; False; False; False
+Grad room; X; X; Grad room; X; False; False; False; False

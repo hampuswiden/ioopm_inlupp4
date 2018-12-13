@@ -49,7 +49,7 @@ public class World {
 	* constructor for World
 	* Info: generates all databases and creates the layout for world and the objects it holds
 	*/
-	public World() {
+	public World(String text_path) {
 		HashMap<String, Room> dbRooms = new HashMap<String, Room>();
 		HashMap<String, Item> dbItems = new HashMap<String, Item>();
 		HashMap<String, Course> dbCourses = new HashMap<String, Course>();
@@ -62,13 +62,13 @@ public class World {
 		Parser p = new Parser();
 
 		// Generate Rooms
-		String pathRooms = "./pollax/text_files/rooms.txt";
+		String pathRooms = text_path + "rooms.txt";
 		p.parse(pathRooms);
 		Room instanceOfRoom = new Room();
 		p.generateDB(instanceOfRoom, dbRooms, dbRooms);
 
 		// Generate Books
-		String pathBooks = "./pollax/text_files/books.txt";
+		String pathBooks = text_path + "books.txt";
 		p.parse(pathBooks);
 		Book instanceOfBook = new Book();
 		p.generateDB(instanceOfBook, dbItems, dbItems);
@@ -80,7 +80,7 @@ public class World {
 
 
 		// Generate Courses
-		String pathCourses = "./pollax/text_files/courses.txt";
+		String pathCourses = text_path + "courses.txt";
 		p.parse(pathCourses);
 		Course instanceOfCourse = new Course();
 		p.generateDB(instanceOfCourse, dbCourses, dbItems);
@@ -92,7 +92,7 @@ public class World {
 		}
 
 		// Generate Teachers
-		String pathTeachers = "./pollax/text_files/teachers.txt";
+		String pathTeachers = text_path + "teachers.txt";
 		p.parse(pathTeachers);
 		Teacher instanceOfTeacher = new Teacher();
 		p.generateDB(instanceOfTeacher, dbCreatures, dbCourses);
@@ -107,7 +107,7 @@ public class World {
 		}
 
 		// Generate Students
-		String pathStudents = "./pollax/text_files/students.txt";
+		String pathStudents = text_path + "students.txt";
 		p.parse(pathStudents);
 		Student instanceOfStudent = new Student();
 		p.generateDB(instanceOfStudent, dbCreatures, dbCourses);
